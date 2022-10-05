@@ -92,7 +92,7 @@ go_register_label.grid(row=3, column=0, columnspan=2, pady=20)
 def go_to_register():
     loginframe.forget()
     registerframe.pack(fill="both", expand=1)
-    title_label['text'] = 'Registro'
+    title_label['text'] = 'VJ Scrum'
     title_label['bg'] = '#f2cb00'
 
 
@@ -192,7 +192,7 @@ go_login_label.grid(row=8, column=0, columnspan=2, pady=10)
 def go_to_login():
     registerframe.forget()
     loginframe.pack(fill="both", expand=1)
-    title_label['text'] = 'Login'
+    title_label['text'] = 'VJ Scrum'
     title_label['bg'] = '#f2cb00'
 
 
@@ -251,7 +251,21 @@ register_button['command'] = register
 
 
 
+# ---------------------------------------------------------- creo mi primer formulario --------------------------------
+# ----------- HEADER ------------- #
 
+headerframe = tk.Frame(root, highlightbackgroun='yellow', highlightcolor='yellow', highlightthickness=2, bg='#f2cb00', width=w, height=70)
+titleframe = tk.Frame(headerframe, bg='#f2cb00', padx=1, pady=1)
+title_label = tk.Label(titleframe, text='VJ Scrum', padx=15, pady=5, bg='#f2cb00', fg='black', font=('Italiana',24), width=8)
+close_button = tk.Button(headerframe, text='X', borderwidth=1, relief='solid', font=('Verdana',12))
+
+headerframe.pack()
+titleframe.pack()
+title_label.pack()
+close_button.pack()
+
+titleframe.place(y=32, relx=0.5, anchor=CENTER)
+close_button.place(x=1280, y=10)
 
 
 root.mainloop()
