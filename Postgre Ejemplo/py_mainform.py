@@ -132,7 +132,7 @@ class mainform1:
 
 
 
-class mainform2: # clase se va a llamar ScrumBoard
+class mainform: # clase se va a llamar ScrumBoard
     
     def __init__(self, Scrumboard):
         self.master = Scrumboard
@@ -321,10 +321,10 @@ class mainform3: # clase se va a llamar To Do
         titulo1_label = tk.Button(titulo1, text='Inicio', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #command = lambda : controller.show_frame(Scrum_board))
 
         titulo2 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo2_label = tk.Button(titulo2, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
 
         titulo3 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo3_label = tk.Button(titulo3, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo3_label = tk.Button(titulo3, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
         
         titulo4 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
         titulo4_label = tk.Button(titulo4, text='Done', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
@@ -338,11 +338,11 @@ class mainform3: # clase se va a llamar To Do
 
         titulo2.pack()
         titulo2_label.pack()
-        titulo2.place(y=190, x=65)
+        titulo2.place(y=190, x=55)
 
         titulo3.pack()
         titulo3_label.pack()
-        titulo3.place(y=340, x=92)
+        titulo3.place(y=340, x=65)
 
         titulo4.pack()
         titulo4_label.pack()
@@ -429,7 +429,7 @@ class mainform4: # clase se va a llamar In Progress
         titulo1_label = tk.Button(titulo1, text='Inicio', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #command = lambda : controller.show_frame(Scrum_board))
 
         titulo2 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo2_label = tk.Button(titulo2, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
 
         titulo3 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
         titulo3_label = tk.Button(titulo3, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
@@ -446,7 +446,7 @@ class mainform4: # clase se va a llamar In Progress
 
         titulo2.pack()
         titulo2_label.pack()
-        titulo2.place(y=190, x=65)
+        titulo2.place(y=190, x=55)
 
         titulo3.pack()
         titulo3_label.pack()
@@ -480,7 +480,7 @@ class mainform4: # clase se va a llamar In Progress
 
 
 
-class mainform: # clase se va a llamar Done
+class mainform12: # clase se va a llamar Done
     
     def __init__(self, Scrumboard):
         self.master = Scrumboard
@@ -506,8 +506,6 @@ class mainform: # clase se va a llamar Done
         titleframe.place(y=32, relx=0.5, anchor=CENTER)
 
     
-
-        
 
         # ----------- END HEADER ------------- #
 
@@ -538,13 +536,13 @@ class mainform: # clase se va a llamar Done
         titulo1_label = tk.Button(titulo1, text='Inicio', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #command = lambda : controller.show_frame(Scrum_board))
 
         titulo2 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo2_label = tk.Button(titulo2, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
 
         titulo3 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo3_label = tk.Button(titulo3, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo3_label = tk.Button(titulo3, text='In progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
         
         titulo4 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo4_label = tk.Button(titulo4, text='Done', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
+        titulo4_label = tk.Button(titulo4, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
 
 
         cajalateral.pack(side = LEFT)
@@ -555,11 +553,11 @@ class mainform: # clase se va a llamar Done
 
         titulo2.pack()
         titulo2_label.pack()
-        titulo2.place(y=190, x=65)
+        titulo2.place(y=190, x=55)
 
         titulo3.pack()
         titulo3_label.pack()
-        titulo3.place(y=340, x=92)
+        titulo3.place(y=340, x=65)
 
         titulo4.pack()
         titulo4_label.pack()
