@@ -9,7 +9,7 @@ h = 720
 
 
 
-class mainform1:
+class mainform:
     
     def __init__(self, master):
         self.master = master
@@ -68,7 +68,7 @@ class mainform1:
 
         cajalateral = tk.Frame(self.master, highlightbackgroun='yellow', highlightcolor='yellow', highlightthickness=2, bg='#D9D9D9', width=300, height=700)
         titulo1 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo1_label = tk.Button(titulo1, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #command = lambda : controller.show_frame(Scrum_board))
+        titulo1_label = tk.Button(titulo1, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1,command = mainform1)
 
         titulo2 = tk.Frame(cajalateral)
         titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
@@ -129,10 +129,17 @@ class mainform1:
 
 
 
+        
 
 
 
-class mainform: # clase se va a llamar ScrumBoard
+
+
+
+
+
+
+class mainform1: # clase se va a llamar ScrumBoard
     
     def __init__(self, Scrumboard):
         self.master = Scrumboard
@@ -140,6 +147,8 @@ class mainform: # clase se va a llamar ScrumBoard
         # ----------- CENTER FORM ------------- #
         ws = self.master.winfo_screenwidth()
         hs = self.master.winfo_screenheight()
+        
+        
         x = (ws-w)/2
         y = (hs-h)/2
         self.master.geometry("%dx%d+%d+%d" % (w, h, x, y))
@@ -505,7 +514,7 @@ class mainform12: # clase se va a llamar Done
         
         titleframe.place(y=32, relx=0.5, anchor=CENTER)
 
-    
+
 
         # ----------- END HEADER ------------- #
 
@@ -571,5 +580,5 @@ class mainform12: # clase se va a llamar Done
 
         # -------------------------------------------- #
         self.master.config(menu=self.menubar, bg="#ffe291")
-        self.lbl = tk.Label(self.master, text='Lista de tareas que ya han sido realizadas:', font=('verdana',17, 'italic', 'bold'), fg='#2A2C2B',bg="#ffe291")
+        self.lbl = tk.Label(self.master, text='Check List done:', font=('verdana',17, 'italic', 'bold'), fg='#2A2C2B',bg="#ffe291")
         self.lbl.place(y=100, x=590, anchor=CENTER)

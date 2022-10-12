@@ -5,7 +5,7 @@ from tkinter.ttk import *
 from tkinter import filedialog
 from tkinter import messagebox
 #import mysql.connector
-from py_mainform import mainform
+from py_mainform import *
 import psycopg2
 
 root = Tk()
