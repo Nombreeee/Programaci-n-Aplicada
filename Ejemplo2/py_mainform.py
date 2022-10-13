@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 import psycopg2
+from MOCKUPS import *
 
 w = 1310
 h = 720
@@ -34,7 +35,8 @@ class mainform:
         titleframe.place(y=32, relx=0.5, anchor=CENTER)
 
     
-
+        # ---------------------------------------------------------------------
+        
         
 
         # ----------- END HEADER ------------- #

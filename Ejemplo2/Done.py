@@ -1,35 +1,28 @@
-# MOCKUPS
-
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from cProfile import label
 from distutils.command.config import config
-from email.mime import image
 # import imp
-from tkinter import*
+from tkinter import *
+from email.mime import image #
 from tkinter.font import BOLD
 from turtle import heading
-from ScrumBoard import *
-from In_Progress import *
-from To_Do import *
-# from Done import Donee
-#import pagregister
+from In_Progress import InProgress
 
+#from MOCKUPS import Inicio
+#import paglogin
 
 w = 1320
 h = 680
 
 
-
-
-
-class Inicio():
+class Donee():
     def __init__(controller):
 
         #Raiz
         ventana2=Tk()
-        ventana2.title("Scrum Inicio")
+        ventana2.title("Scrum Done")
         ventana2.resizable(False, False)
         #ventana2.geometry("900x500")
         #ventana.iconbitmap("Scrum.ico")
@@ -77,24 +70,13 @@ class Inicio():
 
         freim.pack()
 
+        
         # ----------------- Funciones de Moviemiento ---------------- #
 
         def Ir_Progress():
             InProgress() 
             ventana2.destroy()
-                   
-
-        def Ir_Scrum():
-            ventana2.destroy()
-            ScrumBoard1()  
-
-        def Ir_ToDo():
-            ventana2.destroy()
-            ToDo()  
-
-        #def Ir_Done():
-            #ventana2.destroy()
-            #Donee()
+                     
 
         # ----------------- Funciones de Moviemiento end ---------------- #
 
@@ -103,16 +85,16 @@ class Inicio():
 
         cajalateral = tk.Frame(ventana2, highlightbackgroun='yellow', highlightcolor='yellow', highlightthickness=2, bg='#F2CB00', width=300, height=700)
         titulo1 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo1_label = tk.Button(titulo1, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1, command = ScrumBoard1)
+        titulo1_label = tk.Button(titulo1, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #command = mainform1)
 
         titulo2 = tk.Frame(cajalateral)
-        titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1, command= Ir_Progress)
+        titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1, command = Ir_Progress)
 
         titulo3 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo3_label = tk.Button(titulo3, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1, command = Ir_ToDo)
+        titulo3_label = tk.Button(titulo3, text='To Do', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
         
         titulo4 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo4_label = tk.Button(titulo4, text='Done', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1) #,command = Ir_Done)
+        titulo4_label = tk.Button(titulo4, text='Inicio', padx=15, pady=5, bg='#D9D9D9', fg='black', font=('Italiana',18, 'italic'), height= 1)
 
 
 
@@ -134,6 +116,11 @@ class Inicio():
         titulo4_label.pack()
         titulo4.place(y=500, x=92)
 
+        img_boton = tk.PhotoImage(file="log_out.png")
+        boton = ttk.Button(ventana2, image=img_boton )
+        boton.place(x=271, y=650)
+        boton.image = img_boton
+
         
 
         # -----------------------FIN DE LA BARRA LATERAL ----------------------- #
@@ -142,33 +129,8 @@ class Inicio():
 
         ventana2.config(menu=menubar, bg="#D9D9D9")
 
-        lbl = tk.Label(ventana2, text='Bienvenido a la pagina de Scrum', font=('verdana',17, 'italic', 'bold'), fg='#2A2C2B',bg="#D9D9D9")
-        lbl.place(y=90, x=1050, anchor=CENTER)
+        ventana2.config(menu=menubar, bg="#D9D9D9")
+        lbl = tk.Label(ventana2, text='Lista de tareas Completadas:', font=('verdana',17, 'italic', 'bold'), fg='#2A2C2B',bg="#D9D9D9")
+        lbl.place(y=107, x=590, anchor=CENTER)
 
-
-
-
-
-        img_Proye1 = tk.PhotoImage(file="Proyecto1.png")
-        boton = ttk.Button(ventana2, image=img_Proye1, command= Ir_Scrum)
-        boton.place(x=475, y=240)
-        boton.image = img_Proye1
-        lbl_Proy1 = tk.Label(ventana2, text = "Proyecto 1", font = ("Times New Roman", 13), bg = "#D9D9D9").place(x = 545, y = 455)
-
-        img_Proye2 = tk.PhotoImage(file="Proyecto2.png")
-        boton2 = ttk.Button(ventana2, image=img_Proye2, command= Ir_Progress)
-        boton2.place(x=940, y=240)
-        boton2.image = img_Proye2
-        lbl_Proy2 = tk.Label(ventana2, text = "Proyecto 2", font = ("Times New Roman", 13), bg = "#D9D9D9").place(x = 1010, y = 455)
-        
-        
-        img_boton = tk.PhotoImage(file="log_out.png")
-        boton = ttk.Button(ventana2, image=img_boton )
-        boton.place(x=271, y=650)
-        boton.image = img_boton
-       
-
-
-        ventana2.mainloop()
-
-Inicio()
+        blanca = tk.Frame (ventana2, width=900, height=450).place(x = 360, y =170)
