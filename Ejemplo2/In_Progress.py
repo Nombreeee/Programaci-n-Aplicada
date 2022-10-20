@@ -7,7 +7,7 @@ from tkinter import *
 from email.mime import image #
 from tkinter.font import BOLD
 from turtle import heading
-# from ScrumBoard import ScrumBoard1
+from ScrumBoard import ScrumBoard1
 
 #import paglogin
 
