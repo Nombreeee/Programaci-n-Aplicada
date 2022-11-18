@@ -125,13 +125,13 @@ lbl.place(y=90, x=1050, anchor=CENTER)
 
 
 
-img_Proye1 = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/Proyecto1.png")
+img_Proye1 = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/Proyecto1.png")
 boton = ttk.Button(ventana2, image=img_Proye1)#, command= Ir_Scrum)
 boton.place(x=475, y=240)
 boton.image = img_Proye1
 lbl_Proy1 = tk.Label(ventana2, text = "Proyecto 1", font = ("Times New Roman", 13), bg = "#D9D9D9").place(x = 545, y = 455)
 
-img_Proye2 = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/Proyecto2.png")
+img_Proye2 = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/Proyecto2.png")
 boton2 = ttk.Button(ventana2, image=img_Proye2)#, command= Ir_Progress)
 boton2.place(x=940, y=240)
 boton2.image = img_Proye2
@@ -140,7 +140,7 @@ lbl_Proy2 = tk.Label(ventana2, text = "Proyecto 2", font = ("Times New Roman", 1
 
     
 
-img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/log_out.png")
+img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
 boton = ttk.Button(ventana2, image=img_boton, command =  cerrar)
 boton.place(x=271, y=650)
 boton.image = img_boton
@@ -150,14 +150,6 @@ def ir_Done ():
     ventana2.withdraw()
     Donee ()
     tk.Toplevel()
-    
-    
-    
-
-
-titulo4_label['command'] = ir_Done
-
-
 
 
 
@@ -271,7 +263,7 @@ class ScrumBoard1():
         
              
 
-        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/log_out.png")
+        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
         boton = ttk.Button(ventana2, image=img_boton, command = cerrar )
         boton.place(x=271, y=650)
         boton.image = img_boton
@@ -435,7 +427,7 @@ class ToDo():
         
 
 
-        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/log_out.png")
+        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
         boton = ttk.Button(ventana2, image=img_boton, command = cerrar )
         boton.place(x=271, y=650)
         boton.image = img_boton
@@ -583,7 +575,7 @@ class InProgress():
         titulo4.place(y=500, x=92)
 
 
-        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/log_out.png")
+        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
         boton = ttk.Button(ventana2, image=img_boton, command = cerrar )
         boton.place(x=271, y=650)
         boton.image = img_boton
@@ -721,7 +713,7 @@ class Donee():
     
 
 
-        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Ejemplo2/log_out.png")
+        img_boton = tk.PhotoImage(file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
         boton = ttk.Button(ventana2, image=img_boton, command = cerrar )
         boton.place(x=271, y=650)
         boton.image = img_boton
