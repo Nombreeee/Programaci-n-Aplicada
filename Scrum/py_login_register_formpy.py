@@ -10,6 +10,8 @@ import psycopg2
 
 cedula = 1000972264
 idproyecto2 = 3
+selecproyecto = 0
+
 
 username2 = "e"
 root = Tk()
@@ -28,6 +30,7 @@ c = connection.cursor()
 w = 1310
 h = 720
 bgcolor = "#bdc3c7"
+gris = "#D9D9D9"
 
 # ----------- CENTER FORM ------------- #
 # root.overrideredirect(1) # remove border
@@ -102,6 +105,7 @@ password_entry.grid(row=1, column=1)
 login_button.grid(row=2, column=0, columnspan=2, pady=40)
 
 go_register_label.grid(row=3, column=0, columnspan=2, pady=20)
+
 
 # create a function to display the register frame
 
@@ -230,6 +234,7 @@ go_login_label.grid(row=9, column=0, columnspan=2, pady=10)
 male_radiobutton.grid(row=0, column=0)
 female_radiobutton.grid(row=0, column=1)
 
+
 # --------------------------------------- #
 
 
@@ -303,7 +308,7 @@ register_button['command'] = register
 class Inicio():
 
     def __init__(self, master):
-
+        ayudenme = 5
         # cur=py_login_register_form.connection.cursor()
         self.master = master
         self.master.title("Scrum Inicio")
@@ -349,7 +354,14 @@ class Inicio():
             self.master.withdraw()
             app = InProgress(scrumwindow)
 
-        def ir_ScrumBoard():
+        def ir_ScrumBoard1():
+            ayudenme = 1
+            scrumwindow = tk.Toplevel()
+            self.master.withdraw()
+            app = ScrumBoard(scrumwindow)
+
+        def ir_ScrumBoard2():
+            ayudenme = 2
             scrumwindow = tk.Toplevel()
             self.master.withdraw()
             app = ScrumBoard(scrumwindow)
@@ -361,7 +373,7 @@ class Inicio():
         titulo1 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
         titulo1_label = tk.Button(titulo1, text='Scrum Board', padx=15, pady=5, bg='#D9D9D9', fg='black', font=(
             'Italiana', 18, 'italic'), height=1)  # , command = Ir_Scrum)
-        titulo1_label['command'] = ir_ScrumBoard
+        titulo1_label['command'] = ir_ScrumBoard1
 
         titulo2 = tk.Frame(cajalateral)
         titulo2_label = tk.Button(titulo2, text='In Progress', padx=15, pady=5, bg='#D9D9D9', fg='black', font=(
@@ -402,17 +414,12 @@ class Inicio():
         c.execute(sql_select_query3, (username2,))
         record = c.fetchone()
         doc2 = record
-        print(record)
-
-        #dar_projectid = "select proyid from proyectos where document = %s"
-        # c.execute(dar_projectid(username2,))
-        #suprojid = c.fetchone()
-        #print (suprojid)
+        # print(record)
 
         sql_select_query4 = "select proyect from proyectos where document = %s"
         c.execute(sql_select_query4, (doc2,))
         record2 = c.fetchall()
-        print('record 2: ', record2)
+        #print('record 2: ', record2)
 
         if (c.rowcount == 0):
             proye1 = ""
@@ -420,17 +427,13 @@ class Inicio():
 
         elif (c.rowcount == 1):
             proye1 = record2[0]
-            print(proye1)
+            # print(proye1)
 
         elif (c.rowcount == 2):
             proye1 = record2[0]
             proye2 = record2[1]
-            print(proye1)
-
-        #sql_select_query5 = "select historias from progreso where proyid = %s"
-        #c.execute(sql_select_query5, ('3',))
-        #record3 = c.fetchone()
-        #print(record3)
+            #print('proyecto 1: ', proye1)
+            #print ('proyecto 2: ',proye2)
 
         lbl = tk.Label(self.master, text='Bienvenido a la pagina de Scrum', font=(
             'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg="#D9D9D9")
@@ -443,8 +446,8 @@ class Inicio():
         boton.place(x=475, y=240)
         boton.image = img_Proye1
         lbl_Proy1 = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in proye1), font=(
-            "Times New Roman", 13), bg="#D9D9D9").place(x=545, y=455)
-        boton['command'] = ir_ScrumBoard
+            "Times New Roman", 13), bg=gris, width= 28, wraplength= 200).place(x=450, y=455) #  anchor='w', justify=LEFT,  wraplength=900)
+        boton['command'] = ir_ScrumBoard1
 
         img_Proye2 = tk.PhotoImage(
             file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/Proyecto2.png")
@@ -453,8 +456,8 @@ class Inicio():
         boton2.place(x=940, y=240)
         boton2.image = img_Proye2
         lbl_Proy2 = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in proye2), font=(
-            "Times New Roman", 13), bg="#D9D9D9").place(x=1010, y=455)
-        boton2['command'] = ir_ScrumBoard
+            "Times New Roman", 13), bg=gris, width = 28).place(x=915, y=455)
+        boton2['command'] = ir_ScrumBoard2
 
         img_boton = tk.PhotoImage(
             file="D:/Users/Jonathan/Desktop/Uni/4/Programación Aplicada/Scrum/log_out.png")
@@ -463,7 +466,9 @@ class Inicio():
         boton.image = img_boton
 
 
-class ScrumBoard:
+class ScrumBoard ():
+    a = selecproyecto
+    
 
     def __init__(self, master):
 
@@ -526,8 +531,8 @@ class ScrumBoard:
         cajalateral = tk.Frame(self.master, highlightbackgroun='yellow', highlightcolor='yellow',
                                highlightthickness=2, bg='#F2CB00', width=300, height=700)
         titulo1 = tk.Frame(cajalateral, bg='#f2cb00', padx=0.1, pady=1)
-        titulo1_label = tk.Button(titulo1, text='Inicio', padx=15, pady=5, bg='#D9D9D9', fg='black', font=(
-            'Italiana', 18, 'italic'), height=1)  # command = mainform1)
+        titulo1_label = tk.Button(titulo1, text='Inicio', padx=15, pady=5, bg=gris, fg='black', font=(
+            'Italiana', 18, 'italic'), height=1, )  # command = mainform1)
         titulo1_label['command'] = ir_Inicio
 
         titulo2 = tk.Frame(cajalateral)
@@ -579,24 +584,31 @@ class ScrumBoard:
 
         dar_projectid = "select proyid from proyectos where document = %s"
         c.execute(dar_projectid, (doc2,))
-        suprojid = c.fetchone()
-        proyectidd = suprojid
-        print('El proyect Id es: ',proyectidd)
+        suprojid = c.fetchall()
+
+        if (selecproyecto == 1):
+            proyectidd = suprojid[0]
+        elif (selecproyecto == 2):
+            proyectidd = suprojid[1]
+        else:
+            proyectidd = suprojid[0]
+
+        print('El proyect Id es: ', proyectidd)
 
         ver_estado = "select historias from progreso where estado = %s and proyid = %s"
         c.execute(ver_estado, ('0', proyectidd,))
         ToDos = c.fetchall()
-        print ('Los To do: ', ToDos)
+        #print('Los To do: ', ToDos)
 
         ver_estado2 = "select historias from progreso where estado = %s and proyid = %s"
         c.execute(ver_estado2, ('1', proyectidd,))
         InProgresses = c.fetchall()
-        print ('Los In Progress: ', InProgresses)
+        #print('Los In Progress: ', InProgresses)
 
         ver_estado3 = "select historias from progreso where estado = %s and proyid = %s"
         c.execute(ver_estado3, ('2', proyectidd,))
         Dones = c.fetchall()
-        print ('Los Done: ', Dones)
+        #print('Los Done: ', Dones)
 
         #"select tarea from tareas where estado = %s and cedula = %s and pyid = %s",
         #       (1, ce, 3),
@@ -611,6 +623,9 @@ class ScrumBoard:
                             font=('Italiana', 15), bg="#ffe291")
         label12.place(y=620, x=440, anchor=CENTER)
         label12['command'] = ir_ToDo
+        label13 = tk.Label(self.master, text='\n•'.join(''.join(map(str, tup)) for tup in ToDos),
+                           font=('Italiana', 15), bg=gris, width=21, wraplength=220, height=19, anchor='n')  # width= 20, anchor= 'n', justify = LEFT,  wraplength=900 )
+        label13.place(y=370, x=440, anchor=CENTER)
 
         label2 = tk.Label(self.master, text="In Progress",
                           font=('Italiana', 24), bg="#ffe291")
@@ -622,6 +637,9 @@ class ScrumBoard:
                             font=('Italiana', 15), bg="#ffe291")
         label22.place(y=620, x=800, anchor=CENTER)
         label22['command'] = ir_Progress
+        label23 = tk.Label(self.master, text='\n•'.join(''.join(map(str, tup)) for tup in InProgresses),
+                           font=('Italiana', 15), bg="#D9D9D9", width=21, wraplength=220, height=19, anchor='n')
+        label23.place(y=370, x=800, anchor=CENTER)
 
         label3 = tk.Label(self.master, text="Done",
                           font=('Italiana', 24), bg="#ffe291")
@@ -633,6 +651,9 @@ class ScrumBoard:
                             font=('Italiana', 15), bg="#ffe291")
         label32.place(y=620, x=1175, anchor=CENTER)
         label32['command'] = ir_Done
+        label33 = tk.Label(self.master, text='\n•'.join(''.join(map(str, tup)) for tup in Dones),
+                           font=('Italiana', 15), bg="#D9D9D9", width=21, wraplength=220, height=19, anchor='n')
+        label33.place(y=370, x=1175, anchor=CENTER)
 
 
 class ToDo():
@@ -747,39 +768,42 @@ class ToDo():
 
         # -----------------------FIN DE LA BARRA LATERAL ----------------------- #
 
-        sql_select_query2 = "select * from usuarios where username = %s"
-        # c.execute(sql_select_query)
-        # ecm="ecm"
-        print(username2)
-        ecm = username2
-        # nombre=username
-        c.execute(sql_select_query2, (ecm,))
-        record = c.fetchone()
-        print(record)
-
         sql_select_query3 = "select document from usuarios where username = %s"
-        # c.execute(sql_select_query)
-        # ecm="ecm"
-        # print(username2)
-        # nombre=username
-
         c.execute(sql_select_query3, (username2,))
         record = c.fetchone()
         doc2 = record
-        print(record)
+        print('documento del ususario: ', doc2)
 
-        sql_select_query4 = "select proyect from proyectos where document = %s"
-        c.execute(sql_select_query4, (doc2,))
-        record2 = c.fetchall()
-        proye1 = record2[0]
-        proye2 = record2[1]
+        dar_projectid = "select proyid from proyectos where document = %s"
+        c.execute(dar_projectid, (doc2,))
+        suprojid = c.fetchone()
+        proyectidd = suprojid
+        print('El proyect Id es: ', proyectidd)
 
-        lbl = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in proye1), font=(
-            'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg="#D9D9D9")
-        lbl.place(y=107, x=590, anchor=CENTER)
+        ver_estado = "select historias from progreso where estado = %s and proyid = %s"
+        c.execute(ver_estado, ('0', proyectidd,))
+        ToDos = c.fetchall()
+        print('Los To do: ', ToDos)
 
-        blanca = tk.Frame(self.master, width=900,
-                          height=450).place(x=360, y=170)
+        cajita = ttk.Combobox(self.master, state="readonly", width=70,  font=('verdana', 13),
+                              values=ToDos
+                              )
+        cajita.place(x=350, y=550)
+        cajita.set("Seleccione la historia de Usuario")
+
+        lblpresent = tk.Label(self.master, text='Lista de tareas a realizar', font=(
+            'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg=bgcolor)
+        lblpresent.place(y=107, x=480, anchor=CENTER)
+
+        lbl = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in ToDos), font=(
+            'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg=gris, width=56, anchor='w', justify=LEFT,  wraplength=900)
+        lbl.place(y=160, x=355)  # , anchor='e')
+
+        botonactualizar = tk.Button (self.master, width = 20, text = 'Actualizar',  font=('Italiana', 13))
+        botonactualizar.place (x = 1200, y = 550)
+
+        # blanca = tk.Frame(self.master, width=900,
+        #                  height=450).place(x=360, y=170)
 
 
 class InProgress():
@@ -887,12 +911,43 @@ class InProgress():
 
         # -----------------------FIN DE LA BARRA LATERAL ----------------------- #
 
+        sql_select_query3 = "select document from usuarios where username = %s"
+        c.execute(sql_select_query3, (username2,))
+        record = c.fetchone()
+        doc2 = record
+
+        dar_projectid = "select proyid from proyectos where document = %s"
+        c.execute(dar_projectid, (doc2,))
+        suprojid = c.fetchone()
+        proyectidd = suprojid
+        
+        ver_estado = "select historias from progreso where estado = %s and proyid = %s"
+        c.execute(ver_estado, ('1', proyectidd,))
+        InProgresses = c.fetchall()
+        print('Los In Progress: ', InProgresses)
+
+        cajita = ttk.Combobox(self.master, state="readonly", width=70,  font=('verdana', 13),
+                              values=InProgresses
+                              )
+
+
+        cajita.place(x=350, y=550)
+        cajita.set("Seleccione la historia de Usuario")
+
+
         lbl = tk.Label(self.master, text='Lista de tareas que están siendo realizadas:', font=(
             'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg="#D9D9D9")
-        lbl.place(y=107, x=590, anchor=CENTER)
+        lbl.place(y=107, x=600, anchor=CENTER)
 
-        blanca = tk.Frame(self.master, width=900,
-                          height=450).place(x=360, y=170)
+        lbltareas = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in InProgresses), font=(
+            'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg=gris, width=56, anchor='w', justify=LEFT,  wraplength=900)
+        lbltareas.place(y=160, x=355)
+
+        botonactualizar = tk.Button (self.master, width = 20, text = 'Actualizar',  font=('Italiana', 13))
+        botonactualizar.place (x = 1200, y = 550)
+
+        #blanca = tk.Frame(self.master, width=900,
+        #                  height=450).place(x=360, y=170)
 
 
 class Done:
@@ -1003,12 +1058,34 @@ class Done:
 
         # -----------------------FIN DE LA BARRA LATERAL ----------------------- #
 
+        sql_select_query3 = "select document from usuarios where username = %s"
+        c.execute(sql_select_query3, (username2,))
+        record = c.fetchone()
+        doc2 = record
+        print('documento del ususario: ', doc2)
+
+        dar_projectid = "select proyid from proyectos where document = %s"
+        c.execute(dar_projectid, (doc2,))
+        suprojid = c.fetchone()
+        proyectidd = suprojid
+        print('El proyect Id es: ', proyectidd)
+
+        ver_estado = "select historias from progreso where estado = %s and proyid = %s"
+        c.execute(ver_estado, ('2', proyectidd,))
+        Dones = c.fetchall()
+        print('Los Done: ', Dones)
+
+        lbltareas = tk.Label(self.master, text='\n'.join(''.join(map(str, tup)) for tup in Dones), font=(
+            'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg=gris, width=56, anchor='w', justify=LEFT,  wraplength=900)
+        lbltareas.place(y=160, x=355)
+
+
         lbl = tk.Label(self.master, text='Lista de tareas Completadas:', font=(
             'verdana', 17, 'italic', 'bold'), fg='#2A2C2B', bg="#D9D9D9")
-        lbl.place(y=107, x=590, anchor=CENTER)
+        lbl.place(y=107, x=505, anchor=CENTER)
 
-        blanca = tk.Frame(self.master, width=900,
-                          height=450).place(x=360, y=170)
+        #blanca = tk.Frame(self.master, width=900,
+        #                  height=450).place(x=360, y=170)
 
 
 root.mainloop()
